@@ -12,7 +12,7 @@ class Tabular:
     def __call__(self):
         self.stand_col_names()
         self.check_remove_dupl_val()
-        if na_val!=0:
+        if na_val != 0:
             self.sort_miss_vars()
         else:
             print('Dataset has NO Variables with Missing Values')
@@ -73,3 +73,20 @@ class Tabular:
                 miss_vars_thr_rej.append(k)
 
         return thr_miss_vars, miss_vars_thr_rej
+
+class Time_Series(Tabular):
+    """
+    This class performs the following tasks:
+        1. Lowers the column names.
+        2. Checks for the presence of missing values.
+    """
+    def __init__(self, train_df):
+        super().__init__(train_df)
+
+    def __call__(self):
+        super().stand_col_names()
+        na_present = super().check_na()
+        if na_present == 0:
+            print("Dataset has NO Variables with Missing Values.")
+        else:
+            super().sort_miss_vars()
