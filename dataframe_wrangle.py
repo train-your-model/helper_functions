@@ -1,3 +1,6 @@
+# Imports
+import numpy as np
+
 class Tabular:
     """
     This class performs the following tasks:
@@ -89,4 +92,5 @@ class Time_Series(Tabular):
         if na_present == 0:
             print("Dataset has NO Variables with Missing Values.")
         else:
+            print("Dataset contains Variables with Missing Values.")
             super().sort_miss_vars()
