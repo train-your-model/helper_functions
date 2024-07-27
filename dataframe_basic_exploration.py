@@ -1,3 +1,7 @@
+# Imports
+import tensorflow as tf
+
+# 1
 def thr_vals_and_count_dict(df, col, thr_val:int, operator:int) -> dict:
     """
     A function to create a dictionary of unique column observations with their number of occurrences, when the number
@@ -24,4 +28,6 @@ def thr_vals_and_count_dict(df, col, thr_val:int, operator:int) -> dict:
 
     sorted_dict = {k:v for k,v in sorted(filtered_obs.items(), key=lambda item: item[1])}
     return sorted_dict
+
+# 2
 
