@@ -59,7 +59,7 @@ class MoveDatafold:
 
         for file in os.listdir(self.download_fold):
             file_path = os.path.join(self.download_fold, file)
-            create_time = os.path.getctime(file_path)
+            create_time = os.path.getmtime(file_path)
             create_date = datetime.datetime.fromtimestamp(create_time).date()
             if str(create_date) == self.targ_dt:
                 cr_files.append(file)
