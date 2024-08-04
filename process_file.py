@@ -23,6 +23,7 @@ def unzip_data_fold():
             z.extractall()
             z.close()
 
+    print(f'Contents of the Working Directory: {os.listdir(os.getcwd())}')
 
 def read_config(sec, ky):
     """
