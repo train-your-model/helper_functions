@@ -16,14 +16,15 @@ def unzip_data_fold():
     """
     for ind, f in enumerate(os.listdir(os.getcwd())):
         zfs = re.findall("zip\Z", f)
-        if len(zfs)!=0:
+        if len(zfs) != 0:
             fold_ind = ind
             # Unzip and Display the contents of the zip folder
-            z = ZipFile(os.listdir(os.getcwd())[fold_ind],'r')
+            z = ZipFile(os.listdir(os.getcwd())[fold_ind], 'r')
             z.extractall()
             z.close()
 
     print(f'Contents of the Working Directory: {os.listdir(os.getcwd())}')
+
 
 def read_config(sec, ky):
     """
@@ -38,6 +39,7 @@ def read_config(sec, ky):
     config.read(os.path.join(parent_path, file_name))
     val = config[sec][ky]
     return val
+
 
 # Working Class
 class MoveDatafold:

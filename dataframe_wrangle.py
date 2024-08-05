@@ -1,6 +1,7 @@
 # Imports
 import numpy as np
 
+
 class Tabular:
     """
     This class performs the following tasks:
@@ -54,7 +55,7 @@ class Tabular:
             else:
                 non_miss_var_list_df.append(self.df.columns[ind])
 
-            ## Sorting the predictors on the basis of Missing value proportions
+            # Sorting the predictors on the basis of Missing value proportions
         mv_dict_sorted_df = sorted(mv_dict_df.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)
 
     def miss_vars_prop(self):
@@ -77,12 +78,33 @@ class Tabular:
 
         return thr_miss_vars, miss_vars_thr_rej
 
-class Time_Series(Tabular):
+
+class TimeSeries(Tabular):
     """
     This class performs the following tasks:
         1. Lowers the column names.
         2. Checks for the presence of missing values.
     """
+    def __init__(self, train_df):
+        super().__init__(train_df)
+
+    def __call__(self):
+        super().stand_col_names()
+        na_present = super().check_na()
+        if na_present == 0:
+            print("Dataset has NO Variables with Missing Values.")
+        else:
+            print("Dataset contains Variables with Missing Values.")
+            super().sort_miss_vars()
+
+
+class DealwithText(Tabular):
+    """
+    This class performs the following tasks:
+        1. Lowers the column names.
+        2. Checks for the presence of Missing Values.
+    """
+
     def __init__(self, train_df):
         super().__init__(train_df)
 
