@@ -1,5 +1,6 @@
 # Imports
 import numpy as np
+from dataframe_basic_exploration import *
 
 
 class Tabular:
@@ -107,12 +108,33 @@ class DealwithText(Tabular):
 
     def __init__(self, train_df):
         super().__init__(train_df)
+        self.df = train_df
 
-    def __call__(self):
+    def __call__(self, clasf=0):
+        # Standardizes column names
         super().stand_col_names()
+
+        # Check the Presence of Missing Values
         na_present = super().check_na()
         if na_present == 0:
             print("Dataset has NO Variables with Missing Values.")
         else:
             print("Dataset contains Variables with Missing Values.")
             super().sort_miss_vars()
+
+        # Determine the number of words per sample
+        print(f'\n Number of words per sample: {self.get_num_words_per_sample(df=self.df)}')
+
+        # Determine the Class Imbalance
+        if clasf == 1:
+            targ_var = str(input('Enter the name of the Target variable: '))
+            class_imbalance(df=self.df, targ_var=targ_var)
+
+    def get_num_words_per_sample(self, df):
+        """
+        Returns the median number of words per sample Dataframe.
+
+        :return: int; median number of words per sample
+        """
+        num_words = [len(s.split()) for s in df]
+        return np.median(num_words)

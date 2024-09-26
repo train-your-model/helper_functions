@@ -4,7 +4,7 @@ import tensorflow as tf
 
 class WindowGenerator:
     def __init__(self, input_width, label_width, shift,
-                 train_df, val_df, label_columns = None):
+                 train_df, val_df, label_columns=None):
 
         # Store the raw data
         self.df_train = train_df
@@ -71,4 +71,3 @@ class WindowGenerator:
 
         ds = ds.map(self.split_window)
         return ds
-

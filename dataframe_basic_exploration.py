@@ -1,4 +1,7 @@
 # 1
+import numpy as np
+
+
 def thr_vals_and_count_dict(df, col, thr_val: int, operator: int) -> dict:
     """
     A function to create a dictionary of unique column observations with their number of occurrences, when the number
@@ -116,3 +119,23 @@ def assign_unqvalues(df, colname) -> dict:
 
     return mod_dict
 
+
+# 5
+def class_imbalance(df, targ_var):
+    """
+    Determine the Degree of Imbalance of a predictor containing discrete classes, based on the percentage
+    of data belonging to minority class
+
+    :param df: Dataframe
+    :param targ_var: Target Variable consisting of classes
+    :return: Prints the degree of imbalance in the Target Variable
+    """
+
+    min_perc = np.floor(min(df[targ_var].value_counts(1)*100))
+
+    if min_perc in range(20, 41):
+        print("Target variable has Mild Degree of Imbalance: 20-40%")
+    elif min_perc in range(1, 20):
+        print("Target variable has Moderate Degree of Imbalance: 1-20%")
+    elif min_perc < 1:
+        print("Target variable has Extreme Degree of Imbalance: <1%")
