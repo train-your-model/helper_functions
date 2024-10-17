@@ -122,20 +122,9 @@ class DealwithText(Tabular):
             print("Dataset contains Variables with Missing Values.")
             super().sort_miss_vars()
 
-        # Determine the number of words per sample
-        txts_pred = str(input("Enter the name of the predictor with Texts: "))
-        print(f'Number of words per sample: {self.get_num_words_per_sample(df=self.df, txts=txts_pred)}')
-
         # Determine the Class Imbalance
         if clasf == 1:
             targ_var = str(input('Enter the name of the Target variable: '))
             class_imbalance(df=self.df, targ_var=targ_var)
 
-    def get_num_words_per_sample(self, df, txts):
-        """
-        Returns the median number of words per sample Dataframe.
 
-        :return: int; median number of words per sample
-        """
-        num_words = [len(s.split()) for s in df[txts]]
-        return np.median(num_words)

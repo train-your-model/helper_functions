@@ -23,7 +23,7 @@ def unzip_data_fold():
             z.extractall()
             z.close()
 
-    print(f'Contents of the Working Directory: {os.listdir(os.getcwd())}')
+    print(f' Updated Contents of the Working Directory: {os.listdir(os.getcwd())}')
 
 
 def read_config(sec, ky):
@@ -47,11 +47,19 @@ class MoveDatafold:
     This class moves the data folders from the default download folder to the working directory.
     """
 
-    def __init__(self,targ_dt, download_fold = read_config(sec='Base_Directories', ky='default_download_dir'),
-                 targ_dir = os.getcwd()):
+    def __init__(self, targ_dt, download_fold=read_config(sec='Base_Directories', ky='default_download_dir'),
+                 targ_dir=os.getcwd()):
         self.download_fold = download_fold
         self.targ_dt = targ_dt
         self.targ_dir = targ_dir
+
+    def __call__(self):
+        self.move_data_fold(dir_files=self.src_dir_contents())
+
+        unzip_folder = int(input("Do you wish to unzip the data folder? 1/0: "))
+        assert unzip_folder == 1 or unzip_folder == 0, "Takes only 1/0"
+        if unzip_folder == 1:
+            unzip_data_fold()
 
     def src_dir_contents(self):
         """
@@ -99,6 +107,7 @@ class MoveDatafold:
                     file_src = os.path.join(self.download_fold, dir_files[ind])
                     file_dst = self.targ_dir
                     shutil.move(file_src, file_dst)
+                    print("Files have been moved Successfully!!")
 
         except:
             print(f'Data Folder/File have not been moved into the directory.')
