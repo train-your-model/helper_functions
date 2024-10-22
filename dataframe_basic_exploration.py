@@ -44,7 +44,7 @@ class Tabular:
     def __call__(self, class_f=0):
         print(f"Shape of the Dataframe is: {self.df.shape}")
 
-        self.stand_col_names()
+        self.df.columns = self.df.columns.str.lower()
         self.check_remove_dupl_val()
 
         print(list(zip(range(len(self.df)), self.df.columns)))
@@ -59,9 +59,6 @@ class Tabular:
 
         if class_f == 1:  # Classification Problem Statement
             self.class_imbalance()
-
-    def stand_col_names(self):
-        self.df.columns = self.df.columns.str.lower()
 
     def check_remove_dupl_val(self):
         dupl_val = self.df.duplicated().sum()
