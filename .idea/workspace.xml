@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="12238164-41d3-4306-9b11-4a324c19ad70" name="Changes" comment="Minor Changes">
+      <change afterPath="$PROJECT_DIR$/.idea/HelperFunctions.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nlp_classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataframe_basic_exploration.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataframe_basic_exploration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataframe_wrangle.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {}
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/train-your-model/helper_functions&quot;,
+    &quot;accountId&quot;: &quot;dee08db8-d8ec-43a6-98c3-3d5de7d5f3ea&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/dataframe_wrangle.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/feature_engineering.py" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2iMTyJVLStczgA7ge5ZgXmqJN42" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/Desktop/GitHub PP&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="12238164-41d3-4306-9b11-4a324c19ad70" name="Changes" comment="" />
+      <created>1719299700008</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719299700008</updated>
+    </task>
+    <task id="LOCAL-00001" summary="First Commit">
+      <option name="closed" value="true" />
+      <created>1719331804115</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719331804115</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added File - dataframe_wrangle.py with class Tabular to deal with basic data wrangling processes.">
+      <option name="closed" value="true" />
+      <created>1719417952781</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719417952781</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added File - dataframe_wrangle.py with class Time_Series (to deal with Time Series data) subclassed from Tabular.">
+      <option name="closed" value="true" />
+      <created>1721061729679</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1721061729679</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added File: dataframe_basic_exploration.py&#10;Modified File: dataframe_wrangle.py - Modified the call function of the Time Series Class.">
+      <option name="closed" value="true" />
+      <created>1721761461666</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1721761461667</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added File: &#10;1. dataframe_basic_exploration.py&#10;2. config.ini&#10;3. process_file.py&#10;&#10;Modified File: &#10;1. dataframe_wrangle.py - Modified the call function of the Time Series Class.&#10;&#10;2. process_file.py - &#10;&#10;a) Added the class &quot;MoveDataFold&quot; to deal with moving the data file(s) from the default download dir to the working directory. &#10;&#10;b) Added a function to read configuration variables.">
+      <option name="closed" value="true" />
+      <created>1722097033405</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1722097033405</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added File: &#10;1. dataframe_basic_exploration.py&#10;2. config.ini&#10;&#10;Modified File: &#10;1. dataframe_wrangle.py - Modified the call function of the Time Series Class.&#10;&#10;2. process_file.py - &#10;&#10;a) Added the class &quot;MoveDataFold&quot; to deal with moving the data file(s) from the default download dir to the working directory. &#10;&#10;b) Added a function to read configuration variables.">
+      <option name="closed" value="true" />
+      <created>1722102591755</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1722102591755</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added file:&#10;1. dir_paths.py">
+      <option name="closed" value="true" />
+      <created>1722103873660</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1722103873660</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Modified File:&#10;1. process_file.py -&#10;a) Changed the criteria for filtering the files from &quot;creation time&quot; to &quot;modified time&quot;.">
+      <option name="closed" value="true" />
+      <created>1722105065486</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722105065486</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Modified File:&#10;1. process_file.py -&#10;a) Fixed timestamp to date conversion in the class.">
+      <option name="closed" value="true" />
+      <created>1722141589777</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1722141589777</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Modified File:&#10;1. process_file.py -&#10;a) Added a print option to the function unzip_data_fold.">
+      <option name="closed" value="true" />
+      <created>1722796763233</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722796763233</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Modified File:&#10;1. dataframe_wrangle.py:&#10;a) Added the class &quot;DealwithText&quot; for NLP related tasks.">
+      <option name="closed" value="true" />
+      <created>1722885899438</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1722885899438</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Files Modified:&#10;1. dataframe_basic_exploration.py :-&#10;a) Added function multi_valued_rows&#10;b) Added function check_multi_record_preds&#10;c) Added assign_unqvalues">
+      <option name="closed" value="true" />
+      <created>1723662219018</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1723662219018</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Files Added:&#10;1. supplementary_functions.py&#10;2. TS_forecasting.py">
+      <option name="closed" value="true" />
+      <created>1723747226047</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1723747226047</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Files Modified:&#10;1. dataframe_basic_exploration.py:&#10;a. Function determining the degree of imbalance.&#10;&#10;b. Added the above in the call option of the Dealwithtext class&#10;&#10;2. dataframe_wrangle.py:&#10;&#10;a. Function to determine the median number of words per sample Dataframe.&#10;&#10;b.">
+      <option name="closed" value="true" />
+      <created>1727381242522</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1727381242522</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Files Modified:&#10;1. dataframe_wrangle.py:&#10;&#10;a. Added an argument to the function get_num_words_per_sample, asking for the name of the predictor containing the texts.">
+      <option name="closed" value="true" />
+      <created>1727467696694</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1727467696694</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Minor Changes">
+      <option name="closed" value="true" />
+      <created>1729193926718</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1729193926718</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First Commit" />
+    <MESSAGE value="Added File - dataframe_wrangle.py with class Tabular to deal with basic data wrangling processes." />
+    <MESSAGE value="Added File - dataframe_wrangle.py with class Time_Series (to deal with Time Series data) subclassed from Tabular." />
+    <MESSAGE value="Added File: dataframe_basic_exploration.py&#10;Modified File: dataframe_wrangle.py - Modified the call function of the Time Series Class." />
+    <MESSAGE value="Added File: &#10;1. dataframe_basic_exploration.py&#10;2. config.ini&#10;3. process_file.py&#10;&#10;Modified File: &#10;1. dataframe_wrangle.py - Modified the call function of the Time Series Class.&#10;&#10;2. process_file.py - &#10;&#10;a) Added the class &quot;MoveDataFold&quot; to deal with moving the data file(s) from the default download dir to the working directory. &#10;&#10;b) Added a function to read configuration variables." />
+    <MESSAGE value="Added File: &#10;1. dataframe_basic_exploration.py&#10;2. config.ini&#10;&#10;Modified File: &#10;1. dataframe_wrangle.py - Modified the call function of the Time Series Class.&#10;&#10;2. process_file.py - &#10;&#10;a) Added the class &quot;MoveDataFold&quot; to deal with moving the data file(s) from the default download dir to the working directory. &#10;&#10;b) Added a function to read configuration variables." />
+    <MESSAGE value="Added file:&#10;1. dir_paths.py" />
+    <MESSAGE value="Modified File:&#10;1. process_file.py -&#10;a) Changed the criteria for filtering the files from &quot;creation time&quot; to &quot;modified time&quot;." />
+    <MESSAGE value="Modified File:&#10;1. process_file.py -&#10;a) Fixed timestamp to date conversion in the class." />
+    <MESSAGE value="Modified File:&#10;1. process_file.py -&#10;a) Added a print option to the function unzip_data_fold." />
+    <MESSAGE value="Modified File:&#10;1. dataframe_wrangle.py:&#10;a) Added the class &quot;DealwithText&quot; for NLP related tasks." />
+    <MESSAGE value="Files Modified:&#10;1. dataframe_basic_exploration.py :-&#10;a) Added function multi_valued_rows&#10;b) Added function check_multi_record_preds&#10;c) Added assign_unqvalues" />
+    <MESSAGE value="Files Added:&#10;1. supplementary_functions.py&#10;2. TS_forecasting.py" />
+    <MESSAGE value="Files Modified:&#10;1. dataframe_basic_exploration.py:&#10;a. Function determining the degree of imbalance.&#10;&#10;b. Added the above in the call option of the Dealwithtext class&#10;&#10;2. dataframe_wrangle.py:&#10;&#10;a. Function to determine the median number of words per sample Dataframe.&#10;&#10;b." />
+    <MESSAGE value="Files Modified:&#10;1. dataframe_wrangle.py:&#10;&#10;a. Added an argument to the function get_num_words_per_sample, asking for the name of the predictor containing the texts." />
+    <MESSAGE value="Minor Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Changes" />
+  </component>
+</project>
