@@ -1,3 +1,7 @@
+# Imports
+import numpy as np
+
+
 class Tabular:
     """
     This class performs the following tasks:
