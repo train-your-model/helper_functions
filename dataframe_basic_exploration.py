@@ -7,7 +7,7 @@ class Tabular:
     This class performs the following tasks:
         1. Lowers the column names.
         2. Checks the presence of duplicated rows and drop them if present.
-        3. Sorts the variables into variables with and without Missing Values.
+        3. Sorts the variables into variables pipwith and without Missing Values.
         4. Threshold the Missing Variables on the basis of given threshold value.
         5. Checks for the presence of degree of Class Imbalance for the given Target Variable.
         6. Checks for the presence of records with multiple values.
@@ -34,12 +34,13 @@ class Tabular:
     def targvar_name(self, val):
         self.targvar_name = val
 
+    # Parameters
+    miss_var_list = list()  # List containing variable names with missing values
+    non_miss_var_list = list()  # List containing the variables names without the missing values
+    miss_var_dict = dict()  # Dictionary containing the variable names and their missing value proportion
+
     def __init__(self, train_df):
         self.df = train_df
-        self.targvar_name = ""
-        self.miss_vars_list = []
-        self.non_miss_var_list = []
-        self.miss_var_dict = dict()
 
     def __call__(self, class_f=0):
         print(f"Shape of the Dataframe is: {self.df.shape}")
@@ -58,7 +59,7 @@ class Tabular:
             print('Dataset has NO Variables with Missing Values')
 
         if class_f == 1:  # Classification Problem Statement
-            self.class_imbalance()
+            self.class_imbalance(targ_var=self.targvar_name)
 
     def check_remove_dupl_val(self):
         dupl_val = self.df.duplicated().sum()
@@ -79,27 +80,27 @@ class Tabular:
     def sort_miss_vars(self):
         for ind, row in enumerate(self.df.isnull().sum()):
             if row != 0:
-                self.miss_var_list.append(self.df.columns[ind])
-                self.miss_var_dict.update({self.df.columns[ind]: np.round((row / len(self.df)) * 100, 2)})
+                Tabular.miss_var_list.append(self.df.columns[ind])
+                Tabular.miss_var_dict.update({self.df.columns[ind]: np.round((row / len(self.df)) * 100, 2)})
 
             else:
-                self.non_miss_var_list.append(self.df.columns[ind])
+                Tabular.non_miss_var_list.append(self.df.columns[ind])
 
     def miss_var_prop(self):
         sorted_dict = dict(sorted(self.miss_var_dict.items(), key=lambda kv: (kv[1], kv[0]), reverse=True))
         return sorted_dict
 
     def miss_n_nonmiss(self):
-        return self.miss_vars_list, self.non_miss_var_list
+        return Tabular.miss_var_list, self.non_miss_var_list
 
-    def miss_vars_thr(self, miss_var_prop_dict, thr_val: float):
+    def miss_vars_thr(self, thr_val: float):
         # List of predictors meeting the criteria
         thr_miss_vars = []
         # List of predictors not meeting the criteria
         miss_vars_thr_rej = []
 
-        for k in miss_var_prop_dict.keys():
-            if miss_var_prop_dict[k] <= thr_val:
+        for k in Tabular.miss_var_dict.keys():
+            if Tabular.miss_var_dict[k] <= thr_val:
                 thr_miss_vars.append(k)
             else:
                 miss_vars_thr_rej.append(k)
@@ -126,8 +127,8 @@ class Tabular:
 
     def thr_vals_and_count_dict(self, col, thr_val: int, operator: int) -> dict:
         """
-        A function to create a dictionary of unique column observations with their number of occurrences, when the number
-        of occurrences are greater/smaller/equal to the threshold value.
+        A function to create a dictionary of unique column observations with their number of occurrences, when the
+        number of occurrences are greater/smaller/equal to the threshold value.
 
         :param col: Column to be considered
         :param thr_val: Threshold value to filter the column observations
@@ -178,7 +179,6 @@ class Tabular:
         """
         ...
         for pred in pred_list:
-            self.df[pred] = self.df[pred].str.lower()
             splits_list = []
             for i in range(len(self.df)):
                 split_row = self.df[pred][i].split(split_criteria)
@@ -193,20 +193,17 @@ class Tabular:
 
             yield col_split_dict
 
-    def assign_unqvalues(self, colname) -> dict:
+    def assign_unqvalues(self, col) -> dict:
         """
         Function that assigns integer values to the unique records based on their occurrences
-        :param colname: Name of the predictor containing records
+        :param col: Name of the predictor containing records
         :return: A dictionary with the record and their newly assigned integer values
         """
-
-        self.df[colname] = self.df[colname].str.lower()
-
-        pred_uniques = self.df[colname].unique()
+        pred_uniques = self.df[col].unique()
         int_eqv = dict()
 
         for unq in pred_uniques:
-            int_eqv.update({unq: (self.df[colname] == unq).value_counts()[0]})
+            int_eqv.update({unq: len(self.df[col] == unq)})
 
         top_k = list()
         top_v = 0
