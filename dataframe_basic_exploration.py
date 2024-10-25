@@ -27,12 +27,12 @@ class Tabular:
         self.nan_vals = val
 
     @property
-    def targvar_name(self):
-        return self.targvar_name
+    def target_variable_name(self):
+        return self.target_variable_name
 
-    @targvar_name.setter
-    def targvar_name(self, val):
-        self.targvar_name = val
+    @target_variable_name.setter
+    def target_variable_name(self, value):
+        self.target_variable_name = value
 
     # Parameters
     miss_var_list = list()  # List containing variable names with missing values
@@ -50,16 +50,22 @@ class Tabular:
 
         print(list(zip(range(len(self.df)), self.df.columns)))
         targvar_ind = int(input("Enter the index of the Target Variable: "))
-        self.targvar_name = self.df.columns[targvar_ind]
+        self.target_variable_name = self.df.columns[targvar_ind]
 
         self.check_na()
         if self.nan_vals != 0:
             self.sort_miss_vars()
+
+            if self.target_variable_name in Tabular.miss_var_dict.keys():
+                print("Target Variable consists Missing Variable")
+            else:
+                print("Target Variable is free of Missing Variables")
+
         else:
             print('Dataset has NO Variables with Missing Values')
 
         if class_f == 1:  # Classification Problem Statement
-            self.class_imbalance(targ_var=self.targvar_name)
+            self.class_imbalance()
 
     def check_remove_dupl_val(self):
         dupl_val = self.df.duplicated().sum()
@@ -91,7 +97,7 @@ class Tabular:
         return sorted_dict
 
     def miss_n_nonmiss(self):
-        return Tabular.miss_var_list, self.non_miss_var_list
+        return Tabular.miss_var_list, Tabular.non_miss_var_list
 
     def miss_vars_thr(self, thr_val: float):
         # List of predictors meeting the criteria
@@ -107,16 +113,15 @@ class Tabular:
 
         return thr_miss_vars, miss_vars_thr_rej
 
-    def class_imbalance(self, targ_var):
+    def class_imbalance(self):
         """
         Determine the Degree of Imbalance of a predictor containing discrete classes, based on the percentage
         of data belonging to minority class
 
-        :param targ_var: Target Variable consisting of classes
         :return: Prints the degree of imbalance in the Target Variable
         """
 
-        min_perc = np.floor(min(self.df[targ_var].value_counts(1) * 100))
+        min_perc = np.floor(min(self.df[self.target_variable_name].value_counts(1) * 100))
 
         if min_perc in range(20, 41):
             print("Target variable has Mild Degree of Imbalance: 20-40%")
