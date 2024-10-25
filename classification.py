@@ -1,4 +1,4 @@
-from dataframe_basic_exploration import Tabular
+from basic_exploration import Tabular
 
 
 class ClassifyTabular(Tabular):
