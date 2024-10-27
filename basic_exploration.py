@@ -5,20 +5,13 @@ import numpy as np
 # Working Class
 class Tabular:
     """
-    This class performs the following tasks:
-        1. Lowers the column names.
-        2. Checks the presence of duplicated rows and drop them if present.
-        3. Sorts the variables into variables with and without Missing Values.
-        4. Threshold the Missing Variables on the basis of given threshold value.
-        5. Checks for the presence of degree of Class Imbalance for the given Target Variable.
-        6. Checks for the presence of records with multiple values.
-        7. Determine the frequency of single value in a multiple values record.
+    This class performs the following operations:
+        1. Checks the presence of duplicated rows and drop them if present.
+        2. Checks for the presence of degree of Class Imbalance for the given Target Variable.
+        3. Checks for the presence of records with multiple values.
     """
     # Parameters
-    miss_var_list = list()  # List containing variable names with missing values
-    non_miss_var_list = list()  # List containing the variables names without the missing values
-    miss_var_dict = dict()  # Dictionary containing the variable names and their missing value proportion
-    multi_record_predictors = list()  # List containing variable names having multiple records
+    multi_record_predictors = list()  # List of variables with multiple valued records
 
     # Class Methods
     @classmethod
@@ -63,39 +56,6 @@ class Tabular:
         nan_present = len(self.df.columns[self.df.isnull().any()].tolist())
         Tabular.set_nan_values(value=nan_present)
 
-    def sort_miss_vars(self):
-        for ind, row in enumerate(self.df.isnull().sum()):
-            if row != 0:
-                Tabular.miss_var_list.append(self.df.columns[ind])
-                Tabular.miss_var_dict.update({self.df.columns[ind]: np.round((row / len(self.df)) * 100, 2)})
-
-            else:
-                Tabular.non_miss_var_list.append(self.df.columns[ind])
-
-    def miss_var_prop(self):
-        sorted_dict = dict(sorted(self.miss_var_dict.items(), key=lambda kv: (kv[1], kv[0]), reverse=True))
-        return sorted_dict
-
-    def miss_nonmiss_list(self):
-        return Tabular.miss_var_list, Tabular.non_miss_var_list
-
-    def threshold_miss_vars(self, threshold_val: float):
-        """
-        Thresholding missing variables based on the missing variable proportion
-        :param threshold_val: maximum proportion of missing value allowed for each variable
-        :return: A tuple of lists containing filtered and rejected missing variables
-        """
-        thr_miss_vars = []  # List of predictors meeting the criteria
-        miss_vars_thr_rej = []  # List of predictors not meeting the criteria
-
-        for k in Tabular.miss_var_dict.keys():
-            if Tabular.miss_var_dict[k] <= threshold_val:
-                thr_miss_vars.append(k)
-            else:
-                miss_vars_thr_rej.append(k)
-
-        return thr_miss_vars, miss_vars_thr_rej
-
     def check_multi_record_predictors(self) -> list:
         """
         Checks for the presence of Predictors having multiple values for a single record.
@@ -118,45 +78,52 @@ class Tabular:
         min_perc = np.floor(min(self.df[Tabular.get_target_variable_name()].value_counts(1) * 100))
         if min_perc in range(20, 41):
             print("Target variable has Mild Degree of Imbalance: 20-40%")
+
         elif min_perc in range(1, 20):
             print("Target variable has Moderate Degree of Imbalance: 1-20%")
+
         elif min_perc < 1:
             print("Target variable has Extreme Degree of Imbalance: <1%")
 
     # Initialization
     def __init__(self, train_df):
-        Tabular.reset_nan_values()
-        Tabular.reset_target_variable_name()
         self.df = train_df
 
-    def __call__(self, class_f=0):
-        print(f"Shape of the Dataframe is: {self.df.shape}")
+    def __call__(self, prob_type=None):
+        """
+        :param prob_type: 1 - Regression, 2 - Classification
+        """
+        # Reset Class Parameters
+        Tabular.reset_nan_values()
+        Tabular.reset_target_variable_name()
 
-        self.df.columns = self.df.columns.str.lower()
-        print("Dataframe Column Names have been lowered.")
+        # Shape of the Dataframe
+        print(f"Shape of the Dataframe is: {self.df.shape}")
+        print('\n')
 
         # Check for the presence of Duplicated values
         self.check_remove_dupl_val()
+        print('\n')
 
         # Target Variable Determination
         print(list(zip(range(len(self.df)), self.df.columns)))
         target_variable_index = int(input("Enter the index of the Target Variable: "))
         Tabular.set_target_variable_name(value=self.df.columns[target_variable_index])
+        print('\n')
 
         # Check for the presence of Missing Values
         self.check_na()
         if Tabular.get_nan_values() != 0:
-            self.sort_miss_vars()
-
-            if Tabular.target_variable_name in Tabular.miss_var_dict.keys():
-                print("Target Variable consists Missing Variable")
+            print("Dataset HAS variables with Missing Values")
+            if self.df[Tabular.get_target_variable_name()].isnull().any():
+                print("Target Variable HAS Missing Values")
             else:
-                print("Target Variable is free of Missing Variables")
-
+                print("Target Variable is free of Missing Values")
         else:
             print("Dataset has NO variables with Missing Values")
 
         # Check for the presence of Multi-Valued records (separated by "")
+        print('\n')
         self.check_multi_record_predictors()
         if len(Tabular.multi_record_predictors) != 0:
             print("Dataset contains variables with multi-valued records")
@@ -164,6 +131,5 @@ class Tabular:
             print("Dataset DOES NOT contain any predictors with multi-valued records")
 
         # For Tabular Classification Problem Statement
-        if class_f == 1:
+        if prob_type == 2:
             self.class_imbalance()
-
