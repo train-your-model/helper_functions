@@ -8,6 +8,7 @@ class TabularClean:
         1. Categorizes predictors based on their dtypes
         2. Sorts the variables into variables with and without Missing Values.
         3. Threshold the Missing Variables on the basis of given threshold value.
+        4. Checks for the presence of outliers in the predictors of the dataframe.
     """
     # Parameters
     miss_var_list = list()  # List containing variable names with missing values
@@ -19,7 +20,7 @@ class TabularClean:
     flt_pred_lst = []  # List containing variables of float dtype
     dt_pred_lst = []  # List containing variables of datetime dtype
 
-    outlier_indices = []  # List containing the indices of the predictors with outliers
+    predictors_with_outliers = []  # List containing the names of the predictors with outliers
 
     # Methods
     def dtype_categorize(self):
@@ -94,16 +95,27 @@ class TabularClean:
         Checks the presence of outliers in numeric predictors.
         Outliers will be determined using the IQR technique
 
-        :return: An integer 0 - Outlier Not Present, 1 - Outlier Present
+        :return: A class list containing the names of the predictors with outliers
         """
-        ...
+        for col in TabularClean.int_pred_lst:
+            q1, q3 = np.percentile(np.array(self.df[col]), [25, 75])
+            iqr = q3 - q1
+            lower_bound = q1 - (iqr * 1.5)
+            upper_bound = q3 + (iqr * 1.5)
+            outlier_sum = sum(np.where((np.array(self.df[col]) > upper_bound) | (np.array(self.df[col]) < lower_bound),
+                                       1, 0))
+            if outlier_sum != 0:
+                TabularClean.predictors_with_outliers.append(col)
 
     # Initialization
     def __init__(self, df, target_variable):
         self.df = df
         self.target_variable = target_variable
 
-    def __call__(self):
+    def __call__(self, prob_type=None):
+        """
+        :param prob_type: 1 - Regression, 2 - Classification
+        """
 
         # Lower the column Names
         self.df.columns = self.df.columns.str.lower()
@@ -114,3 +126,16 @@ class TabularClean:
         self.dtype_categorize()
         if self.dtype_sanity_check() != 1:
             print("Dtype Categorization did not process accurately")
+        print('\n')
+
+        # Checking for the Outliers in the Predictors
+        self.check_outlier()
+
+        if self.target_variable in TabularClean.int_pred_lst:
+            TabularClean.int_pred_lst.remove(self.target_variable)
+
+        if len(TabularClean.predictors_with_outliers) == 0:
+            print("There are NO outliers present in the Integer dtype predictors.")
+        else:
+            print("There is presence of outliers in the integer dtype predictors.")
+            print(f"The Predictors are: {TabularClean.predictors_with_outliers}")
