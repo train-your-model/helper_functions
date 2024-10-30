@@ -112,9 +112,10 @@ class TabularClean:
         self.df = df
         self.target_variable = target_variable
 
-    def __call__(self, prob_type=None):
+    def __call__(self, prob_type=None, miss_var_present=None):
         """
         :param prob_type: 1 - Regression, 2 - Classification
+        :param miss_var_present: 0: Missing Value Variable NOT Present, 1: Missing Value Variable IS Present
         """
 
         # Lower the column Names
@@ -127,6 +128,10 @@ class TabularClean:
         if self.dtype_sanity_check() != 1:
             print("Dtype Categorization did not process accurately")
         print('\n')
+
+        # Missing Value Variable
+        if miss_var_present == 1:
+            self.sort_miss_vars()
 
         # Checking for the Outliers in the Predictors
         self.check_outlier()
