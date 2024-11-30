@@ -121,7 +121,7 @@ class TabularClean:
         # Lower the column Names
         self.df.columns = self.df.columns.str.lower()
         print("Dataframe Column Names have been lowered.")
-        print('\n')
+        print('**'*20)
 
         # Dtype Grouping
         self.dtype_categorize()
