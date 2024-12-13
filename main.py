@@ -18,11 +18,12 @@ parser = argparse.ArgumentParser(description="Setting-up the Directory for Diffe
 parser.add_argument("site_name_abbv", help="Name of the Site containing the project")
 parser.add_argument("working_dir_name", help="Name of the Case-Specific Directory")
 parser.add_argument('problem_type', type=int,
-                    help='1- Tabular Regression, 2- Tabular Classification, 3- Time Series Forecasting')
+                    help='1- Tabular Regression, 2- Tabular Classification, 3- Time Series Forecasting ')
+parser.add_argument("target_date", type=str,
+                    help="Date of Data Folder and Files Download. Date Format dd-mm-yyyy")
 
 # Parsing
 args = parser.parse_args()
-
 
 # Supplementary Functions
 def create_parent_dir(user_input):
@@ -61,9 +62,19 @@ if __name__ == "__main__":
 
     try:
         create_working_directory(temp_dict=abb_dict, working_directory=args.working_dir_name)
+
+        file_destination = os.path.join(pf.read_config(sec='Base_Directories', ky='hackathon_parent_dir'),
+                                        abb_dict.get(args.site_name_abbv), args.working_dir_name)
         copy_template(temp_dict=templates_dict, template_type=args.problem_type,
-                      file_dest=str(os.path.join(pf.read_config(sec='Base_Directories', ky='hackathon_parent_dir'),
-                                                 abb_dict.get(args.site_name_abbv), args.working_dir_name))+"\\")
+                      file_dest=str(file_destination+"\\"))
+
+        print("Working Directory has been created and relevant template has been copied into the directory.",
+              end='\n')
+
+        files_and_folders = pf.MoveDatafold(targ_dt=args.target_date, targ_dir=file_destination)
+        files_and_folders()
+
+        print("Data Folder/Files have been moved into the Working Directory.", end='\n')
 
     except PermissionError:
         print("Template File has NO required permissions to be copied onto the Project Working Directory")

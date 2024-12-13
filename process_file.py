@@ -9,23 +9,19 @@ import pandas as pd
 
 
 # Supplement Functions
-def unzip_data_fold():
-    """
-    Unzips the zipped data folder present in the current working directory
 
-    :return: Unzipped data folder or contents of the data folder
+def check_zip_folders(dir) -> int:
     """
-    for ind, f in enumerate(os.listdir(os.getcwd())):
+    This function checks whether a directory contains any zip folders.
+    :param dir: Directory to be checked for the zip folders
+    :return: An integer value depending on the findall object - 0: Folder NOT present, 1: Folder is present
+    """
+    for ind, f in enumerate(os.listdir(dir)):
         zfs = re.findall("zip", f)
         if len(zfs) != 0:
-            fold_ind = ind
-            # Unzip and Display the contents of the zip folder
-            z = ZipFile(os.listdir(os.getcwd())[fold_ind], 'r')
-            z.extractall()
-            z.close()
-
-    print(f' Updated Contents of the Working Directory: {os.listdir(os.getcwd())}')
-
+            return 1
+        else:
+            return 0
 
 def read_config(sec, ky):
     """
@@ -57,10 +53,62 @@ class MoveDatafold:
     def __call__(self):
         self.move_data_fold(dir_files=self.src_dir_contents())
 
-        unzip_folder = int(input("Do you wish to unzip the data folder? 1/0: "))
-        assert unzip_folder == 1 or unzip_folder == 0, "Takes only 1/0"
+        unzip_folder = check_zip_folders(dir=self.targ_dir)
+        working_dir_pre = list()
         if unzip_folder == 1:
-            unzip_data_fold()
+            working_dir_pre.extend(os.listdir(self.targ_dir))
+            self.unzip_data_fold()
+
+        len_working_dir_pre = len(working_dir_pre)
+
+        working_dir_post = os.listdir(self.targ_dir)
+        len_working_dir_post = len(working_dir_post)
+        unzippd_in_folder = len_working_dir_post - len_working_dir_pre
+
+        # 1 represents that the unzipped contents are inside a unzipped folder
+        if unzippd_in_folder == 1:
+            self.move_out_unzipped_folders(b4_list=working_dir_pre,
+                                           after_list=working_dir_post)
+            print("Unzipped Folder contents have been moved out and the redundant folder has been removed.")
+
+    def unzip_data_fold(self):
+        """
+        Unzips the zipped data folder present in the current working directory
+
+        :return: Unzipped data folder or contents of the data folder
+        """
+        for ind, f in enumerate(os.listdir(self.targ_dir)):
+            zfs = re.findall("zip", f)
+            if len(zfs) != 0:
+                # Unzip and Display the contents of the zip folder
+                z = ZipFile(os.path.join(self.targ_dir,f))
+                z.extractall(path=self.targ_dir)
+                z.close()
+
+        print(f' Updated Contents of the Working Directory: {os.listdir(self.targ_dir)}')
+
+    def move_out_unzipped_folders(self, b4_list:list, after_list:list):
+        """
+        Moves out the contents of the unzipped folder to the working directory and then removes the redundant folder
+
+        :param b4_list: List containing the working directories contents before the first unzipping
+        :param after_list: List containing the working directory contents after the first unzipping
+        :return: A working directory without the redundant unzipped folder
+        """
+
+        # Moving Section
+        unzp_folder_name = str(set(after_list).difference(set(b4_list)))
+        folder_path = os.path.join(self.targ_dir,unzp_folder_name)
+
+        unzp_contents = list(os.listdir(folder_path))
+        for content in unzp_contents:
+            file_src = os.path.join(folder_path, content)
+            file_dst = self.targ_dir
+            shutil.move(file_src, file_dst)
+
+        # Deletion Section
+        os.rmdir(path=folder_path)
+
 
     def src_dir_contents(self):
         """
