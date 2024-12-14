@@ -61,6 +61,7 @@ if __name__ == "__main__":
         print("JSON file has been updated with the newly created site-name")
 
     try:
+        # Creating Working Directory and Copying the relevant template into the directory
         create_working_directory(temp_dict=abb_dict, working_directory=args.working_dir_name)
 
         file_destination = os.path.join(pf.read_config(sec='Base_Directories', ky='hackathon_parent_dir'),
@@ -71,6 +72,7 @@ if __name__ == "__main__":
         print("Working Directory has been created and relevant template has been copied into the directory.",
               end='\n')
 
+        # Moving the Data Files/Folder into the Directory and unzipping it
         files_and_folders = pf.MoveDatafold(targ_dt=args.target_date, targ_dir=file_destination)
         files_and_folders()
 
