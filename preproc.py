@@ -114,8 +114,6 @@ class TabularClean:
     def __init__(self, df, target_variable):
         self.df = df
         self.target_variable = target_variable
-        # Reset the Class Parameters
-        TabularClean.int_pred_lst = TabularClean.flt_pred_lst = TabularClean.obj_pred_lst = TabularClean.dt_pred_lst = []
 
     def __call__(self, prob_type=None, miss_var_present=None):
         """
