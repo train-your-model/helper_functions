@@ -138,11 +138,11 @@ class TabularClean:
         if miss_var_present == 1:
             self.sort_miss_vars()
 
-        # Checking for the Outliers in the Predictors
-        self.check_outlier()
-
         if self.target_variable in TabularClean.int_pred_lst:
             TabularClean.int_pred_lst.remove(self.target_variable)
+
+        # Checking for the Outliers in the Predictors
+        self.check_outlier()
 
         if len(TabularClean.predictors_with_outliers) == 0:
             print("There are NO outliers present in the Integer dtype predictors.")
