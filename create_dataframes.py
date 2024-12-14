@@ -14,13 +14,13 @@ class CreateDataframes:
         file_value = 0
         global train_f_name, test_f_name, sub_f_name
         for f in data_files:
-            if re.findall("train", f):
+            if re.findall("train", f, re.IGNORECASE):
                 train_f_name = f
                 file_value += 1
-            elif re.findall("test", f):
+            elif re.findall("test", f, re.IGNORECASE):
                 test_f_name = f
                 file_value += 2
-            elif re.findall("submission", f):
+            elif re.findall("submission", f, re.IGNORECASE):
                 sub_f_name = f
                 file_value += 3
 

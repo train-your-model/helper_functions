@@ -45,7 +45,7 @@ class Tabular:
         if dupl_val != 0:
             before_drop_shape = self.df.shape()[0]
             print('There is  presence of duplicated rows in the dataset')
-            self.df = self.df.drop_duplicates(inplace=True)
+            self.df = self.df.drop_duplicates(inplace=True, keep='last')
             after_drop_shape = self.df.shape()[0]
             print(f'Number of duplicated rows dropped: {before_drop_shape-after_drop_shape}')
 

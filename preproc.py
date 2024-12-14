@@ -26,7 +26,7 @@ class TabularClean:
     def dtype_categorize(self):
         """
         Function to categorize predictors on the basis of their dtypes
-        :return: Lists of grouped predictors
+        :return: Lists of grouped predictors - int, float, object
         """
         int_types = ['int8', 'int32', 'int64']
         flt_types = ['float32', 'float64']
@@ -43,6 +43,9 @@ class TabularClean:
 
             elif self.df[col].dtypes in flt_types:
                 TabularClean.flt_pred_lst.append(col)
+
+        return (TabularClean.int_pred_lst, TabularClean.flt_pred_lst, TabularClean.obj_pred_lst,
+                TabularClean.dt_pred_lst)
 
     def dtype_sanity_check(self):
         """
@@ -111,6 +114,8 @@ class TabularClean:
     def __init__(self, df, target_variable):
         self.df = df
         self.target_variable = target_variable
+        # Reset the Class Parameters
+        TabularClean.int_pred_lst = TabularClean.flt_pred_lst = TabularClean.obj_pred_lst = TabularClean.dt_pred_lst = []
 
     def __call__(self, prob_type=None, miss_var_present=None):
         """
