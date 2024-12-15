@@ -100,7 +100,7 @@ class TabularClean:
 
         :return: A class list containing the names of the predictors with outliers
         """
-        for col in TabularClean.int_pred_lst:
+        for col in TabularClean.int_pred_lst + TabularClean.flt_pred_lst:
             q1, q3 = np.percentile(np.array(self.df[col]), [25, 75])
             iqr = q3 - q1
             lower_bound = q1 - (iqr * 1.5)
@@ -123,21 +123,22 @@ class TabularClean:
 
         # Lower the column Names
         self.df.columns = self.df.columns.str.lower()
-        print("Dataframe Column Names have been lowered.")
-        print('**'*20)
+        print("Dataframe Column Names have been lowered.", end='\n*****')
 
         # Dtype Grouping
         self.dtype_categorize()
         if self.dtype_sanity_check() != 1:
-            print("Dtype Categorization did not process accurately")
-        print('\n')
+            print("Dtype Categorization did not process accurately", end='\n*****')
 
         # Missing Value Variable
         if miss_var_present == 1:
             self.sort_miss_vars()
 
+        # Lowering the name of the Target variable before being looked-up in the lists
         if self.target_variable in TabularClean.int_pred_lst:
-            TabularClean.int_pred_lst.remove(self.target_variable)
+            TabularClean.int_pred_lst.remove(self.target_variable.str.lower())
+        elif self.target_variable in TabularClean.flt_pred_lst:
+            TabularClean.flt_pred_lst.remove(self.target_variable.str.lower())
 
         # Checking for the Outliers in the Predictors
         self.check_outlier()
