@@ -23,6 +23,19 @@ class TabularClean:
     predictors_with_outliers = []  # List containing the names of the predictors with outliers
 
     # Methods
+    def parameters_reset(self):
+        """
+        :return: Class parameters at their initial state of empty lists.
+        """
+        TabularClean.var_list = []
+        TabularClean.non_miss_var_list = []
+        TabularClean.miss_var_list = []
+
+        TabularClean.obj_pred_lst = []
+        TabularClean.int_pred_lst = []
+        TabularClean.flt_pred_lst = []
+        TabularClean.dt_pred_lst = []
+
     def dtype_categorize(self):
         """
         Function to categorize predictors on the basis of their dtypes
@@ -110,6 +123,9 @@ class TabularClean:
             if outlier_sum != 0:
                 TabularClean.predictors_with_outliers.append(col)
 
+    def preds_with_outliers(self) -> list:
+        return TabularClean.predictors_with_outliers
+
     # Initialization
     def __init__(self, df, target_variable):
         self.df = df
@@ -120,15 +136,17 @@ class TabularClean:
         :param prob_type: 1 - Regression, 2 - Classification
         :param miss_var_present: 0: Missing Value Variable NOT Present, 1: Missing Value Variable IS Present
         """
+        # Parameters Reset
+        self.parameters_reset()
 
         # Lower the column Names
         self.df.columns = self.df.columns.str.lower()
-        print("Dataframe Column Names have been lowered.", end='\n*****')
+        print("Dataframe Column Names have been lowered.", end='\n')
 
         # Dtype Grouping
         self.dtype_categorize()
         if self.dtype_sanity_check() != 1:
-            print("Dtype Categorization did not process accurately", end='\n*****')
+            print("Dtype Categorization did not process accurately", end='\n')
 
         # Missing Value Variable
         if miss_var_present == 1:
@@ -146,5 +164,5 @@ class TabularClean:
         if len(TabularClean.predictors_with_outliers) == 0:
             print("There are NO outliers present in the Integer dtype predictors.")
         else:
-            print("There is presence of outliers in the integer dtype predictors.")
+            print("There is presence of outliers in the numerical predictors.")
             print(f"The Predictors are: {TabularClean.predictors_with_outliers}")
