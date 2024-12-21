@@ -9,11 +9,14 @@ class TabularClean:
         2. Sorts the variables into variables with and without Missing Values.
         3. Threshold the Missing Variables on the basis of given threshold value.
         4. Checks for the presence of outliers in the predictors of the dataframe.
+        5. Checks for the presence of row indices within the missing variables where the records have missing values.
     """
     # Parameters
     miss_var_list = list()  # List containing variable names with missing values
     non_miss_var_list = list()  # List containing the variables names without the missing values
     miss_var_dict = dict()  # Dictionary containing the variable names and their missing value proportion
+
+    commn_missvars_indx = list() # List containing the indices of rows with all Missing Values
 
     obj_pred_lst = []  # List containing variables of object dtype
     int_pred_lst = []  # List containing variables of int dtype
@@ -126,8 +129,45 @@ class TabularClean:
     def preds_with_outliers(self) -> list:
         return TabularClean.predictors_with_outliers
 
+    def check_allrow_nan(self) -> int:
+        """
+        Function to check if the Dataframe consists of rows with missing variables for that particular row
+        :return: A list of indices where all the records of the rows have missing values
+        """
+        func_copy = self.df.fillna('None')
+        col_ind_dict = {}
+
+        for col in TabularClean.miss_var_list:
+            row_idx = []
+            for i in range(self.df.shape[0]):
+                if func_copy[col][i] == 'None':
+                    row_idx.append(i)
+
+            col_ind_dict.update({col: row_idx})
+
+        indxs = [v for _,v in col_ind_dict.items()]
+        indxs_len = len(indxs)
+
+        commn_indxs = []
+        for i in range(indxs_len - 1):
+            if len(commn_indxs) == 0:
+                tmp_indx = np.intersect1d(indxs[i], indxs[i + 1])
+                commn_indxs.extend(tmp_indx)
+            else:
+                tmp_indx = np.intersect1d(indxs[i], indxs[i + 1])
+                new_commn_indxs = np.intersect1d(tmp_indx, commn_indxs)
+                commn_indxs = new_commn_indxs
+
+        if len(commn_indxs) == 0:
+            print("There are NO instances where the Missing Values are present at particular row indices.")
+            return 0
+        else:
+            print(f"There are {len(commn_indxs)} instances where the Missing Values are present at particular row indices.")
+            TabularClean.commn_missvars_indx = commn_indxs
+            return len(commn_indxs)
+
     # Initialization
-    def __init__(self, df, target_variable):
+    def __init__(self, df, target_variable=None):
         self.df = df
         self.target_variable = target_variable
 
@@ -151,6 +191,7 @@ class TabularClean:
         # Missing Value Variable
         if miss_var_present == 1:
             self.sort_miss_vars()
+            self.check_allrow_nan()
 
         # Lowering the name of the Target variable before being looked-up in the lists
         if self.target_variable in TabularClean.int_pred_lst:
