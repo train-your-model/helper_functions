@@ -1,3 +1,4 @@
+import json
 import os
 
 
@@ -24,3 +25,12 @@ class ApproachExport:
 
         else:
             return os.mkdir(os.path.join(os.getcwd(), self.dir_path))
+
+    def dict_export(self, map_dict, f_name):
+        """
+        :map_dict: Dictionary to be exported
+        :param f_name: File name to be given
+        :return: A json file containing the dictionary
+        """
+        with open(f_name, "w") as outfile:
+            json.dump(map_dict, outfile)
