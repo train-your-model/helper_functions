@@ -166,6 +166,22 @@ class TabularClean:
             TabularClean.commn_missvars_indx = commn_indxs
             return len(commn_indxs)
 
+    @staticmethod
+    def check_neg_columns(df, num_dtype_columns: list) -> list:
+        """
+        A function to check for the presence of numeric dtype columns with negative columns
+        :param df: Dataframe in consideration
+        :param num_dtype_columns: Columns of numeric dtypes
+        :return: A list of column names having negative value(s)
+        """
+        col_vals = df[num_dtype_columns].describe().loc['min'].values
+        neg_cols = []
+        for ind, vals in enumerate(col_vals):
+            if vals < 0:
+                col_name = num_dtype_columns[ind]
+                neg_cols.append(col_name)
+        return neg_cols
+
     # Initialization
     def __init__(self, df, target_variable=None):
         self.df = df
@@ -203,7 +219,19 @@ class TabularClean:
         self.check_outlier()
 
         if len(TabularClean.predictors_with_outliers) == 0:
-            print("There are NO outliers present in the Integer dtype predictors.")
+            print("There are NO outliers present in the Integer dtype predictors.", end="\n")
         else:
             print("There is presence of outliers in the numerical predictors.")
-            print(f"The Predictors are: {TabularClean.predictors_with_outliers}")
+            print(f"The Predictors are: {TabularClean.predictors_with_outliers}", end="\n")
+
+        # Checking for the presence of negative values in integer dtype predictors
+        if len(TabularClean.int_pred_lst) != 0:
+            negative_columns = TabularClean.check_neg_columns(df=self.df,
+                                                              num_dtype_columns=TabularClean.int_pred_lst)
+            if len(negative_columns) == 0:
+                print("No Negative values bearing Columns in the Dataframe", end="\n")
+            else:
+                print("Presence of Columns bearing Negative Values.", end="\n")
+                print(f"Name(s) of above-mentioned columns: {negative_columns}", end="\n")
+
+
