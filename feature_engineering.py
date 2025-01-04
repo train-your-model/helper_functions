@@ -50,3 +50,41 @@ def custom_qtr_determination(start_month, end_month, df_col):
             qtr_lst.append(4)
 
     return qtr_lst
+
+# 3 Function to determine the next values in the set of sequence of arrays
+def univariate_seq_det(x_array, y_array, x_pred:list, save_model=False) -> list:
+    """
+    :param x_array: Given set of Labels - Can be used for Train Data
+    :param y_array: Given set of Values - Can be used for Train Data
+    :param x_pred: Provided separately, for the predictions to be made
+    :param save_model: When True, saves the trained model into the working directory
+    :return: An array of predictions from the saved model in the function
+    """
+    # Imports
+    from keras import Sequential
+    from keras.layers import Dense
+    import numpy as np
+    from keras.callbacks import EarlyStopping
+
+    # Model Architecture
+    model = Sequential([
+        Dense(units=1, input_shape=[1])
+    ])
+
+    # Model Compilation
+    model.compile(optimizer='sgd', loss='mean_squared_error')
+
+    # Model Training
+    stop_early = EarlyStopping(monitor='loss', patience=3)
+    model.fit(x=x_array, y=y_array, epochs=150, callbacks=[stop_early])
+
+    # Save Model
+    model.save("univariate_model.h5")
+
+    # Making Prediction
+    preds = model.predict(list(x_pred))
+
+    # Formatting
+    preds = preds.tolist()
+
+    return preds
