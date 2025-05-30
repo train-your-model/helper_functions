@@ -5,10 +5,10 @@ import argparse
 import process_file as pf
 
 # Dealing with JSONS
-with open('Site_Names.json', 'r') as abb_file:
+with open(pf.read_config(sec='JSON_Files', ky='site_names'), 'r') as abb_file:
     abb_dict = json.load(abb_file)
 
-with open('Templates_Names.json', 'r') as temp_file:
+with open(pf.read_config(sec='JSON_Files', ky='templates_names_json'), 'r') as temp_file:
     templates_dict = json.load(temp_file)
 
 # Instantiate
@@ -38,10 +38,11 @@ def create_working_directory(temp_dict, working_directory):
 
 
 def copy_template(temp_dict, template_type, file_dest):
-    global temp_file_ky
+    temp_file_ky = ''
     for k, v in temp_dict.items():
         if v == template_type:
             temp_file_ky = k
+
     file_src = pf.read_config(sec='Templates', ky=temp_file_ky)
     shutil.copy2(file_src, file_dest)
 
@@ -56,7 +57,7 @@ if __name__ == "__main__":
         create_parent_dir(user_input=v_input)
         print("New Parent Directory has been created")
 
-        with open('Site_Names.json', 'w') as site:
+        with open(pf.read_config(sec='JSON_Files', ky='site_names'), 'w') as site:
             json.dump(abb_dict, site)
         print("JSON file has been updated with the newly created site-name")
 
