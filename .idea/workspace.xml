@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12238164-41d3-4306-9b11-4a324c19ad70" name="Changes" comment="Minor Changes">
-      <change afterPath="$PROJECT_DIR$/.idea/HelperFunctions.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classification.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nlp_classification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataframe_basic_exploration.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataframe_basic_exploration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataframe_wrangle.py" beforeDir="false" />
+    <list default="true" id="12238164-41d3-4306-9b11-4a324c19ad70" name="Changes" comment="[Modified - preproc.py.py]&#10;1. Added a function to check for the presence of a negative value in a pandas dataframe">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preproc.py" beforeDir="false" afterPath="$PROJECT_DIR$/preproc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/process_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/process_file.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,12 +49,43 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Python.template_origins.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/Desktop/GitHub PP&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="HelperFunctions" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\DELL\PycharmProjects\HelperFunctions\main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -206,8 +230,203 @@
       <option name="project" value="LOCAL" />
       <updated>1729193926718</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="[Files Deleted]&#10;dataframe_wrangle.py&#10;&#10;[Files Modified]&#10;Refactored dataframe_basic_exploration.py&#10;&#10;[Files Added]&#10;classification.py">
+      <option name="closed" value="true" />
+      <created>1729594374846</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1729594374846</updated>
+    </task>
+    <task id="LOCAL-00018" summary="[Modified]&#10;Fixed Library Import in dataframe_basic_exploration.py&#10;&#10;[ISSUE]&#10;Kernel Dies everytime the Tabular class is instantiated">
+      <option name="closed" value="true" />
+      <created>1729601991983</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1729601991983</updated>
+    </task>
+    <task id="LOCAL-00019" summary="[Modified]&#10;Removed function for lowering the column names  in dataframe_basic_exploration.py">
+      <option name="closed" value="true" />
+      <created>1729626528148</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1729626528148</updated>
+    </task>
+    <task id="LOCAL-00020" summary="[Modified]&#10;1. Removed function for lowering the column names  in dataframe_basic_exploration.py&#10;&#10;2. For class Tabular, created parameters for Miss_Variables in dataframe_basic_exploration.py&#10;&#10;3. Sorted the attribute reference issue in the method &quot;assign_unqvalues&quot; pf Tabular class.&#10;&#10;4. Fixed the Error code - 3221225725 by removing the initialisation of &quot;targ_name&quot; in class Tabular.">
+      <option name="closed" value="true" />
+      <created>1729802872072</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1729802872072</updated>
+    </task>
+    <task id="LOCAL-00021" summary="[Modified]&#10;1. Nomenclature changed.">
+      <option name="closed" value="true" />
+      <created>1729836427663</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1729836427663</updated>
+    </task>
+    <task id="LOCAL-00022" summary="[Modified]&#10;1. Refactored dataframe_basic_exploration.py into basic_exploration.py.&#10;&#10;[Deleted]&#10;1. File has been deleted - dataframe_basic_exploration.py&#10;&#10;[Addition]&#10;1. File has been created - feature_engineering.py">
+      <option name="closed" value="true" />
+      <created>1729885736940</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1729885736940</updated>
+    </task>
+    <task id="LOCAL-00023" summary="[Modified]&#10;1. feature_engineering.py renamed to preproc.py&#10;&#10;2. Refactored preproc.py and basic_exploration.py&#10;&#10;3. Added parameters and function for dtype based categorizing">
+      <option name="closed" value="true" />
+      <created>1730062125601</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1730062125601</updated>
+    </task>
+    <task id="LOCAL-00024" summary="[Modified] - preproc.py&#10;1. Added a method to check for the presence of outliers in the &quot;int&quot; dtype parameters.&#10;&#10;2. Added a parameter to contain the names of the variables containing the outliers.&#10;&#10;3. Added an argument to &quot;call&quot; method">
+      <option name="closed" value="true" />
+      <created>1730147697532</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1730147697532</updated>
+    </task>
+    <task id="LOCAL-00025" summary="[Modified] - preproc.py&#10;1. Added an argument to sort for the presence of missing valued variable&#10;&#10;[Added]&#10;1. feature_engineering.py - contains functions that can be used for feature engineering">
+      <option name="closed" value="true" />
+      <created>1730318248024</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1730318248024</updated>
+    </task>
+    <task id="LOCAL-00026" summary="[Modified] - config.ini&#10;1. Added the &quot;Templates&quot; section for ipynb_templates paths.&#10;&#10;[Added] - template_origins.py&#10;1. This file creates the working directory and copies the relevant ipynb template into the directory.">
+      <option name="closed" value="true" />
+      <created>1731528088160</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1731528088160</updated>
+    </task>
+    <task id="LOCAL-00027" summary="[Modified] - template_origins.py&#10;1. Refactored to make the code dynamic.&#10;&#10;[Added]&#10;1. Site_Names.json&#10;2. Templates_Names.json">
+      <option name="closed" value="true" />
+      <created>1731794641388</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1731794641388</updated>
+    </task>
+    <task id="LOCAL-00028" summary="[Modified] - process_file.py&#10;1. &quot;\Z&quot; has been dropped from all the &quot;.findall()&quot; searches.&#10;&#10;2. Added a class that deals with creating dataframes.">
+      <option name="closed" value="true" />
+      <created>1731857611339</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1731857611339</updated>
+    </task>
+    <task id="LOCAL-00029" summary="[Modified] - preproc.py&#10;&#10;1. Minor change to the print option in the &quot;call&quot; option.&#10;&#10;[Modified] - config.ini&#10;&#10;1. Added file path to the &quot;timeSeries ipynb file&quot;&#10;&#10;[Modified] - basic_exploration.py&#10;&#10;1. Added the parameter for Time Series in the &quot;call&quot; parameter">
+      <option name="closed" value="true" />
+      <created>1732991484726</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1732991484726</updated>
+    </task>
+    <task id="LOCAL-00030" summary="[Files Deleted]&#10;classification.py&#10;&#10;[Name Changed]&#10;template_origins.py changed to main.py&#10;&#10;[MODIFIED - main.py]&#10;1. Adding to the call function of &quot;MoveDataFold&quot; class.&#10;&#10;2. Added a function to MoveDataFold class, which moves out the contents of the un-zipped folder to the working directory.&#10;&#10;[MODIFIED - process_file.py]&#10;1. Added a function that checks the presence of zip folders in a given directory.">
+      <option name="closed" value="true" />
+      <created>1734116088517</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1734116088517</updated>
+    </task>
+    <task id="LOCAL-00031" summary="[Files Addition]&#10;create_dataframes.py&#10;&#10;[Modified process_file.py]&#10;1. Moved &quot;CreateDataframe&quot; class has been moved to create_dataframes.py">
+      <option name="closed" value="true" />
+      <created>1734156677357</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1734156677357</updated>
+    </task>
+    <task id="LOCAL-00032" summary="[ISSUE - create_dataframes.py - Solved]&#10;&#10;1. Added re.IGNORECASE to re.findall flag.&#10;&#10;[Modified - basic_exploration.py]&#10;&#10;1. Added the 'keep' argument to duplicated row method.&#10;&#10;[Modified - preproc.py]&#10;&#10;1. Added the return statement to the dtype_categorization function.&#10;&#10;2.Added the reset option in the &quot;__init__&quot; function.">
+      <option name="closed" value="true" />
+      <created>1734191008830</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1734191008830</updated>
+    </task>
+    <task id="LOCAL-00033" summary="[Modified - preproc.py]&#10;&#10;1. Re-ordered the statement to remove the target variable from the integer list.">
+      <option name="closed" value="true" />
+      <created>1734201500793</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1734201500793</updated>
+    </task>
+    <task id="LOCAL-00034" summary="[Modified - preproc.py]&#10;&#10;1. Removed the reset statement of dtype specific lists">
+      <option name="closed" value="true" />
+      <created>1734202394217</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1734202394217</updated>
+    </task>
+    <task id="LOCAL-00035" summary="[Modified - preproc.py]&#10;&#10;1. Added the lower method to the name of the target variable before looking it up in the desired dtype list itself.">
+      <option name="closed" value="true" />
+      <created>1734247660993</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1734247660993</updated>
+    </task>
+    <task id="LOCAL-00036" summary="[Modified - preproc.py]&#10;&#10;1. Added a function to return the list of predictors with outliers present - in the call function.">
+      <option name="closed" value="true" />
+      <created>1734286662212</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1734286662212</updated>
+    </task>
+    <task id="LOCAL-00037" summary="[Modified - feature_engineering.py]&#10;&#10;1. Added a function which would return quarter number for given month.">
+      <option name="closed" value="true" />
+      <created>1734375199039</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1734375199039</updated>
+    </task>
+    <task id="LOCAL-00038" summary="[Modified - preproc.py]&#10;1. Added default value to the &quot;target_variable&quot; argument.&#10;&#10;2. A function that returns the indices of the rows with all NaN values among the missing variables.">
+      <option name="closed" value="true" />
+      <created>1734805790855</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1734805790855</updated>
+    </task>
+    <task id="LOCAL-00039" summary="[Modified - supplementary.py]&#10;1. Added a function to export a dictionary to a JSON file.">
+      <option name="closed" value="true" />
+      <created>1734903549348</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1734903549348</updated>
+    </task>
+    <task id="LOCAL-00040" summary="[Modified - preproc.py.py]&#10;1. Added a function to check for the presence of a negative value in a pandas dataframe">
+      <option name="closed" value="true" />
+      <created>1734983172170</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1734983172170</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.ini" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -221,22 +440,31 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First Commit" />
-    <MESSAGE value="Added File - dataframe_wrangle.py with class Tabular to deal with basic data wrangling processes." />
-    <MESSAGE value="Added File - dataframe_wrangle.py with class Time_Series (to deal with Time Series data) subclassed from Tabular." />
-    <MESSAGE value="Added File: dataframe_basic_exploration.py&#10;Modified File: dataframe_wrangle.py - Modified the call function of the Time Series Class." />
-    <MESSAGE value="Added File: &#10;1. dataframe_basic_exploration.py&#10;2. config.ini&#10;3. process_file.py&#10;&#10;Modified File: &#10;1. dataframe_wrangle.py - Modified the call function of the Time Series Class.&#10;&#10;2. process_file.py - &#10;&#10;a) Added the class &quot;MoveDataFold&quot; to deal with moving the data file(s) from the default download dir to the working directory. &#10;&#10;b) Added a function to read configuration variables." />
-    <MESSAGE value="Added File: &#10;1. dataframe_basic_exploration.py&#10;2. config.ini&#10;&#10;Modified File: &#10;1. dataframe_wrangle.py - Modified the call function of the Time Series Class.&#10;&#10;2. process_file.py - &#10;&#10;a) Added the class &quot;MoveDataFold&quot; to deal with moving the data file(s) from the default download dir to the working directory. &#10;&#10;b) Added a function to read configuration variables." />
-    <MESSAGE value="Added file:&#10;1. dir_paths.py" />
-    <MESSAGE value="Modified File:&#10;1. process_file.py -&#10;a) Changed the criteria for filtering the files from &quot;creation time&quot; to &quot;modified time&quot;." />
-    <MESSAGE value="Modified File:&#10;1. process_file.py -&#10;a) Fixed timestamp to date conversion in the class." />
-    <MESSAGE value="Modified File:&#10;1. process_file.py -&#10;a) Added a print option to the function unzip_data_fold." />
-    <MESSAGE value="Modified File:&#10;1. dataframe_wrangle.py:&#10;a) Added the class &quot;DealwithText&quot; for NLP related tasks." />
-    <MESSAGE value="Files Modified:&#10;1. dataframe_basic_exploration.py :-&#10;a) Added function multi_valued_rows&#10;b) Added function check_multi_record_preds&#10;c) Added assign_unqvalues" />
-    <MESSAGE value="Files Added:&#10;1. supplementary_functions.py&#10;2. TS_forecasting.py" />
-    <MESSAGE value="Files Modified:&#10;1. dataframe_basic_exploration.py:&#10;a. Function determining the degree of imbalance.&#10;&#10;b. Added the above in the call option of the Dealwithtext class&#10;&#10;2. dataframe_wrangle.py:&#10;&#10;a. Function to determine the median number of words per sample Dataframe.&#10;&#10;b." />
-    <MESSAGE value="Files Modified:&#10;1. dataframe_wrangle.py:&#10;&#10;a. Added an argument to the function get_num_words_per_sample, asking for the name of the predictor containing the texts." />
     <MESSAGE value="Minor Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Changes" />
+    <MESSAGE value="[Files Deleted]&#10;dataframe_wrangle.py&#10;&#10;[Files Modified]&#10;Refactored dataframe_basic_exploration.py&#10;&#10;[Files Added]&#10;classification.py" />
+    <MESSAGE value="[Modified]&#10;Fixed Library Import in dataframe_basic_exploration.py&#10;&#10;[ISSUE]&#10;Kernel Dies everytime the Tabular class is instantiated" />
+    <MESSAGE value="[Modified]&#10;Removed function for lowering the column names  in dataframe_basic_exploration.py" />
+    <MESSAGE value="[Modified]&#10;1. Removed function for lowering the column names  in dataframe_basic_exploration.py&#10;&#10;2. For class Tabular, created parameters for Miss_Variables in dataframe_basic_exploration.py&#10;&#10;3. Sorted the attribute reference issue in the method &quot;assign_unqvalues&quot; pf Tabular class.&#10;&#10;4. Fixed the Error code - 3221225725 by removing the initialisation of &quot;targ_name&quot; in class Tabular." />
+    <MESSAGE value="[Modified]&#10;1. Nomenclature changed." />
+    <MESSAGE value="[Modified]&#10;1. Refactored dataframe_basic_exploration.py into basic_exploration.py.&#10;&#10;[Deleted]&#10;1. File has been deleted - dataframe_basic_exploration.py&#10;&#10;[Addition]&#10;1. File has been created - feature_engineering.py" />
+    <MESSAGE value="[Modified]&#10;1. feature_engineering.py renamed to preproc.py&#10;&#10;2. Refactored preproc.py and basic_exploration.py&#10;&#10;3. Added parameters and function for dtype based categorizing" />
+    <MESSAGE value="[Modified] - preproc.py&#10;1. Added a method to check for the presence of outliers in the &quot;int&quot; dtype parameters.&#10;&#10;2. Added a parameter to contain the names of the variables containing the outliers.&#10;&#10;3. Added an argument to &quot;call&quot; method" />
+    <MESSAGE value="[Modified] - preproc.py&#10;1. Added an argument to sort for the presence of missing valued variable&#10;&#10;[Added]&#10;1. feature_engineering.py - contains functions that can be used for feature engineering" />
+    <MESSAGE value="[Modified] - config.ini&#10;1. Added the &quot;Templates&quot; section for ipynb_templates paths.&#10;&#10;[Added] - template_origins.py&#10;1. This file creates the working directory and copies the relevant ipynb template into the directory." />
+    <MESSAGE value="[Modified] - template_origins.py&#10;1. Refactored to make the code dynamic.&#10;&#10;[Added]&#10;1. Site_Names.json&#10;2. Templates_Names.json" />
+    <MESSAGE value="[Modified] - process_file.py&#10;1. &quot;\Z&quot; has been dropped from all the &quot;.findall()&quot; searches.&#10;&#10;2. Added a class that deals with creating dataframes." />
+    <MESSAGE value="[Modified] - preproc.py&#10;&#10;1. Minor change to the print option in the &quot;call&quot; option.&#10;&#10;[Modified] - config.ini&#10;&#10;1. Added file path to the &quot;timeSeries ipynb file&quot;&#10;&#10;[Modified] - basic_exploration.py&#10;&#10;1. Added the parameter for Time Series in the &quot;call&quot; parameter" />
+    <MESSAGE value="[Files Deleted]&#10;classification.py&#10;&#10;[Name Changed]&#10;template_origins.py changed to main.py&#10;&#10;[MODIFIED - main.py]&#10;1. Adding to the call function of &quot;MoveDataFold&quot; class.&#10;&#10;2. Added a function to MoveDataFold class, which moves out the contents of the un-zipped folder to the working directory.&#10;&#10;[MODIFIED - process_file.py]&#10;1. Added a function that checks the presence of zip folders in a given directory." />
+    <MESSAGE value="[Files Addition]&#10;create_dataframes.py&#10;&#10;[Modified process_file.py]&#10;1. Moved &quot;CreateDataframe&quot; class has been moved to create_dataframes.py" />
+    <MESSAGE value="[ISSUE - create_dataframes.py - Solved]&#10;&#10;1. Added re.IGNORECASE to re.findall flag.&#10;&#10;[Modified - basic_exploration.py]&#10;&#10;1. Added the 'keep' argument to duplicated row method.&#10;&#10;[Modified - preproc.py]&#10;&#10;1. Added the return statement to the dtype_categorization function.&#10;&#10;2.Added the reset option in the &quot;__init__&quot; function." />
+    <MESSAGE value="[Modified - preproc.py]&#10;&#10;1. Re-ordered the statement to remove the target variable from the integer list." />
+    <MESSAGE value="[Modified - preproc.py]&#10;&#10;1. Removed the reset statement of dtype specific lists" />
+    <MESSAGE value="[Modified - preproc.py]&#10;&#10;1. Added the lower method to the name of the target variable before looking it up in the desired dtype list itself." />
+    <MESSAGE value="[Modified - preproc.py]&#10;&#10;1. Added a function to return the list of predictors with outliers present - in the call function." />
+    <MESSAGE value="[Modified - feature_engineering.py]&#10;&#10;1. Added a function which would return quarter number for given month." />
+    <MESSAGE value="[Modified - preproc.py]&#10;1. Added default value to the &quot;target_variable&quot; argument.&#10;&#10;2. A function that returns the indices of the rows with all NaN values among the missing variables." />
+    <MESSAGE value="[Modified - supplementary.py]&#10;1. Added a function to export a dictionary to a JSON file." />
+    <MESSAGE value="[Modified - preproc.py.py]&#10;1. Added a function to check for the presence of a negative value in a pandas dataframe" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Modified - preproc.py.py]&#10;1. Added a function to check for the presence of a negative value in a pandas dataframe" />
   </component>
 </project>

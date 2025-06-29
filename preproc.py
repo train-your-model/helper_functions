@@ -66,7 +66,7 @@ class TabularClean:
     def dtype_sanity_check(self):
         """
         Checks if the total of lengths of the dtype lists equal to the number of dataframe columns
-        :return: An interger 1 - Successful Categorization, 0 - Failed Categorization
+        :return: An integer 1 - Successful Categorization, 0 - Failed Categorization
         """
         list_len = (len(TabularClean.obj_pred_lst) + len(TabularClean.int_pred_lst) + len(TabularClean.flt_pred_lst)
                     + len(TabularClean.dt_pred_lst))

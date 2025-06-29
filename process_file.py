@@ -95,7 +95,7 @@ class MoveDatafold:
         """
 
         # Moving Section
-        unzp_folder_name = str(set(after_list).difference(set(b4_list)))
+        unzp_folder_name = "".join(map(str,(set(after_list).difference(set(b4_list)))))
         folder_path = os.path.join(self.targ_dir,unzp_folder_name)
 
         unzp_contents = list(os.listdir(folder_path))
