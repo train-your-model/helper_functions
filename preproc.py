@@ -68,6 +68,9 @@ class TabularClean:
         Checks if the total of lengths of the dtype lists equal to the number of dataframe columns
         :return: An integer 1 - Successful Categorization, 0 - Failed Categorization
         """
+        # Dtype Categorize
+        self.dtype_categorize()
+
         list_len = (len(TabularClean.obj_pred_lst) + len(TabularClean.int_pred_lst) + len(TabularClean.flt_pred_lst)
                     + len(TabularClean.dt_pred_lst))
 
@@ -200,7 +203,6 @@ class TabularClean:
         print("Dataframe Column Names have been lowered.", end='\n')
 
         # Dtype Grouping
-        self.dtype_categorize()
         if self.dtype_sanity_check() != 1:
             print("Dtype Categorization did not process accurately", end='\n')
 
