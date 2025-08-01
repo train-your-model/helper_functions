@@ -11,7 +11,9 @@ class Tabular:
         3. Checks for the presence of records with multiple values.
     """
     # Parameters
-    multi_record_predictors = list()  # List of variables with multiple valued records
+    multi_record_predictors_w_space = list()  # List of variables with multiple valued records
+    multi_record_predictors_w_comma = list()
+    multi_record_common = list()
 
     # Class Methods
     @classmethod
@@ -63,10 +65,42 @@ class Tabular:
         """
         specific_column_names = [col for col in self.df.columns.to_list() if self.df[col].dtypes == 'O']
 
-        for col in specific_column_names:
+        conf_code_spc, pred_list_spc = self.multi_record_w_spaces(obj_cols=specific_column_names)
+        conf_code_com, pred_list_com = self.multi_record_w_comma(obj_cols=specific_column_names)
+
+        if conf_code_spc == 1 and conf_code_com == 0:
+            Tabular.multi_record_predictors_w_space.extend(pred_list_spc)
+        elif conf_code_spc == 0 and conf_code_com == 1:
+            Tabular.multi_record_predictors_w_comma.extend(pred_list_com)
+        elif conf_code_spc == 1 and conf_code_com == 1:
+            # Check for the common predictors
+            common_preds :list = list(set(pred_list_spc)&set(pred_list_com))
+            Tabular.multi_record_common.extend(common_preds)
+
+
+    def multi_record_w_spaces(self,obj_cols):
+        split_w_spaces = []
+        for col in obj_cols:
             split_row_max = max(self.df[col].dropna().apply(lambda x: len(x.split(' '))))
             if split_row_max > 1:
-                Tabular.multi_record_predictors.append(col)
+                split_w_spaces.append(col)
+
+        if len(split_w_spaces) != 0:
+            return 1, split_w_spaces
+        else:
+            return 0, split_w_spaces
+
+    def multi_record_w_comma(self, obj_cols):
+        split_w_commas = []
+        for col in obj_cols:
+            split_row_max = max(self.df[col].dropna().apply(lambda x: len(x.split(' '))))
+            if split_row_max > 1:
+                split_w_commas.append(col)
+
+        if len(split_w_commas) != 0:
+            return 1, split_w_commas
+        else:
+            return 0, split_w_commas
 
     def class_imbalance(self):
         """
@@ -125,8 +159,16 @@ class Tabular:
         # Check for the presence of Multi-Valued records (separated by "")
         print('\n')
         self.check_multi_record_predictors()
-        if len(Tabular.multi_record_predictors) != 0:
-            print("Dataset contains variables with multi-valued records")
+        if len(Tabular.multi_record_predictors_w_space) != 0 or len(Tabular.multi_record_predictors_w_comma) != 0 or len(Tabular.multi_record_common) != 0:
+            print("Dataset contains variables with multi-valued records", end='\n')
+
+            if len(Tabular.multi_record_predictors_w_space) != 0:
+                print(f'List of Multi-valued Predictors, separated with spaces: {Tabular.multi_record_predictors_w_space}')
+            if len(Tabular.multi_record_predictors_w_comma) != 0:
+                print(f'List of Multi-valued Predictors, separated with comma: {Tabular.multi_record_predictors_w_comma}')
+            if len(Tabular.multi_record_common) != 0:
+                print(f'List of Multi-valued Predictors, separated with spaces and comma: {Tabular.multi_record_common}')
+
         else:
             print("Dataset DOES NOT contain any predictors with multi-valued records")
 

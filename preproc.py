@@ -39,6 +39,10 @@ class TabularClean:
         TabularClean.flt_pred_lst = []
         TabularClean.dt_pred_lst = []
 
+    def clean_df_col_names(self):
+        "Removes the white-spaces from the column names"
+        self.df.columns = list(map(lambda x: x.strip(), self.df.columns))
+
     def dtype_categorize(self):
         """
         Function to categorize predictors on the basis of their dtypes
@@ -198,8 +202,9 @@ class TabularClean:
         # Parameters Reset
         self.parameters_reset()
 
-        # Lower the column Names
+        # Standardizing the column Names
         self.df.columns = self.df.columns.str.lower()
+        self.clean_df_col_names()
         print("Dataframe Column Names have been lowered.", end='\n')
 
         # Dtype Grouping
