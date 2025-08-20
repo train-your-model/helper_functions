@@ -232,13 +232,16 @@ class TabularClean:
             print(f"The Predictors are: {TabularClean.predictors_with_outliers}", end="\n")
 
         # Checking for the presence of negative values in integer dtype predictors
-        if len(TabularClean.int_pred_lst) != 0:
-            negative_columns = TabularClean.check_neg_columns(df=self.df,
-                                                              num_dtype_columns=TabularClean.int_pred_lst)
-            if len(negative_columns) == 0:
-                print("No Negative values bearing Columns in the Dataframe", end="\n")
-            else:
-                print("Presence of Columns bearing Negative Values.", end="\n")
-                print(f"Name(s) of above-mentioned columns: {negative_columns}", end="\n")
-
-
+        negative_columns = []
+        if (len(TabularClean.int_pred_lst) != 0) or (len(TabularClean.int_pred_lst) != 0):
+            if (len(TabularClean.int_pred_lst) != 0):
+                negative_columns = TabularClean.check_neg_columns(df=self.df,
+                                                                  num_dtype_columns=TabularClean.int_pred_lst)
+            elif (len(TabularClean.flt_pred_lst) != 0):
+                negative_columns = TabularClean.check_neg_columns(df=self.df,
+                                                                  num_dtype_columns=TabularClean.flt_pred_lst)
+        if len(negative_columns) == 0:
+            print("No Negative values bearing Columns in the Dataframe", end="\n")
+        else:
+            print("Presence of Columns bearing Negative Values.", end="\n")
+            print(f"Name(s) of above-mentioned columns: {negative_columns}", end="\n")

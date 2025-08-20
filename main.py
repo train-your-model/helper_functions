@@ -21,6 +21,8 @@ parser.add_argument('problem_type', type=int,
                     help='1- Tabular Regression, 2- Tabular Classification, 3- Time Series Forecasting ')
 parser.add_argument("target_date", type=str,
                     help="Date of Data Folder and Files Download. Date Format dd-mm-yyyy")
+parser.add_argument("workbook_name", type=str,
+                    help="Rename the template workbook copied into the working directory")
 
 # Parsing
 args = parser.parse_args()
@@ -72,6 +74,12 @@ if __name__ == "__main__":
 
         print("Working Directory has been created and relevant template has been copied into the directory.",
               end='\n')
+
+        # Template Renaming in the Working Directory
+        old_ipynb_name = file_destination+"\\"+os.listdir(file_destination)[0]
+        new_ipynb_name = file_destination+"\\"+args.workbook_name
+
+        os.rename(old_ipynb_name, new_ipynb_name)
 
         # Moving the Data Files/Folder into the Directory and unzipping it
         files_and_folders = pf.MoveDatafold(targ_dt=args.target_date, targ_dir=file_destination)
