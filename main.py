@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
         # Template Renaming in the Working Directory
         old_ipynb_name = file_destination+"\\"+os.listdir(file_destination)[0]
-        new_ipynb_name = file_destination+"\\"+args.workbook_name
+        new_ipynb_name = file_destination+"\\"+args.workbook_name+".ipynb"
 
         os.rename(old_ipynb_name, new_ipynb_name)
 
