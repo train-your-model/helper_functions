@@ -4,6 +4,8 @@ import json
 import argparse
 import process_file as pf
 import subprocess
+import re
+from zipfile import ZipFile
 
 # Dealing with JSONS
 with open(pf.read_config(sec='JSON_Files', ky='site_names'), 'r') as abb_file:
@@ -97,7 +99,15 @@ if __name__ == "__main__":
             contest_name = data_url.split('/')[4]
 
             # API
-            subprocess.run(f"kaggle competitions download -c {contest_name} -p {file_destination} --unzip")
+            subprocess.run(f"kaggle competitions download -c {contest_name} -p {file_destination}")
+
+            # Unzipping the Downloaded Data
+            for ind, f in enumerate(os.listdir(file_destination)):
+                zfs = re.findall("zip", f)
+                if len(zfs) != 0:
+                    z = ZipFile(os.path.join(file_destination, f))
+                    z.extractall()
+                    z.close()
 
         # -------------------------------Dealing with OTHER datasetS--------------------------------------------#
         else:
