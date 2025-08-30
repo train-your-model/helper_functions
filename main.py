@@ -97,7 +97,7 @@ if __name__ == "__main__":
             contest_name = data_url.split('/')[4]
 
             # API
-            subprocess.run(f"kaggle competitions download -c {contest_name} -p {file_destination}")
+            subprocess.run(f"kaggle competitions download -c {contest_name} -p {file_destination} --unzip")
 
         # -------------------------------Dealing with OTHER datasetS--------------------------------------------#
         else:
