@@ -3,6 +3,7 @@ import shutil
 import json
 import argparse
 import process_file as pf
+import subprocess
 
 # Dealing with JSONS
 with open(pf.read_config(sec='JSON_Files', ky='site_names'), 'r') as abb_file:
@@ -81,11 +82,30 @@ if __name__ == "__main__":
 
         os.rename(old_ipynb_name, new_ipynb_name)
 
-        # Moving the Data Files/Folder into the Directory and unzipping it
-        files_and_folders = pf.MoveDatafold(targ_dt=args.target_date, targ_dir=file_destination)
-        files_and_folders()
+        #-------------------------------Dealing with KAGGLE dataset--------------------------------------------#
+        if args.site_name_abbv.upper() == "KG":
+            # Environment Set-Up
+            json_file_path = pf.read_config(sec='JSON_Files', ky='kaggle_token_json')
+            with open(json_file_path, 'r') as file:
+                data = json.load(file)
 
-        print("Data Folder/Files have been moved into the Working Directory.", end='\n')
+            os.environ['KAGGLE_USERNAME'] = data['username']
+            os.environ['KAGGLE_KEY'] = data['key']
+
+            # URL
+            data_url: str = str(input("Please paste the DATASET URL: "))
+            contest_name = data_url.split('/')[4]
+
+            # API
+            subprocess.run(f"kaggle competitions download -c {contest_name} -p {file_destination}")
+
+        # -------------------------------Dealing with OTHER datasetS--------------------------------------------#
+        else:
+            # Moving the Data Files/Folder into the Directory and unzipping it
+            files_and_folders = pf.MoveDatafold(targ_dt=args.target_date, targ_dir=file_destination)
+            files_and_folders()
+
+            print("Data Folder/Files have been moved into the Working Directory.", end='\n')
 
     except PermissionError:
         print("Template File has NO required permissions to be copied onto the Project Working Directory")
