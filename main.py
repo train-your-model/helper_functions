@@ -105,10 +105,10 @@ if __name__ == "__main__":
             for ind, f in enumerate(os.listdir(file_destination)):
                 zfs = re.findall("zip", f)
                 if len(zfs) != 0:
-                    z = ZipFile(os.path.join(file_destination, f))
-                    z.extractall()
+                    z = ZipFile(os.path.join(file_destination,f))
+                    z.extractall(path=file_destination)
                     z.close()
-
+                    print("The KAGGLE dataset has been downloaded and unzipped.")
         # -------------------------------Dealing with OTHER datasetS--------------------------------------------#
         else:
             # Moving the Data Files/Folder into the Directory and unzipping it
