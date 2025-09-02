@@ -22,10 +22,12 @@ parser.add_argument("site_name_abbv", help="Name of the Site containing the proj
 parser.add_argument("working_dir_name", help="Name of the Case-Specific Directory")
 parser.add_argument('problem_type', type=int,
                     help='1- Tabular Regression, 2- Tabular Classification, 3- Time Series Forecasting ')
-parser.add_argument("target_date", type=str,
-                    help="Date of Data Folder and Files Download. Date Format dd-mm-yyyy")
 parser.add_argument("workbook_name", type=str,
                     help="Rename the template workbook copied into the working directory")
+
+# Optional Arguments
+parser.add_argument("-ddt", type=str,
+                    help="Date of Data Folder and Files Download. Date Format dd-mm-yyyy")
 
 # Parsing
 args = parser.parse_args()
