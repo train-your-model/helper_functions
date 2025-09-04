@@ -1,7 +1,6 @@
 # Imports
 import numpy as np
 
-
 class TabularClean:
     """
     This class performs the following operations:
@@ -46,7 +45,6 @@ class TabularClean:
     def dtype_categorize(self):
         """
         Function to categorize predictors on the basis of their dtypes
-        :return: Lists of grouped predictors - int, float, object
         """
         int_types = ['int8', 'int32', 'int64']
         flt_types = ['float32', 'float64']
@@ -64,15 +62,11 @@ class TabularClean:
             elif self.df[col].dtypes in flt_types:
                 TabularClean.flt_pred_lst.append(col)
 
-        return (TabularClean.int_pred_lst, TabularClean.flt_pred_lst, TabularClean.obj_pred_lst,
-                TabularClean.dt_pred_lst)
-
     def dtype_sanity_check(self):
         """
         Checks if the total of lengths of the dtype lists equal to the number of dataframe columns
         :return: An integer 1 - Successful Categorization, 0 - Failed Categorization
         """
-       
         list_len = (len(TabularClean.obj_pred_lst) + len(TabularClean.int_pred_lst) + len(TabularClean.flt_pred_lst)
                     + len(TabularClean.dt_pred_lst))
 
@@ -80,6 +74,12 @@ class TabularClean:
             return 1
         else:
             return 0
+
+    def return_dtype_lsts(self):
+        """
+        :return: Returns the lists of categorized dtypes
+        """
+        return TabularClean.obj_pred_lst, TabularClean.int_pred_lst, TabularClean.flt_pred_lst, TabularClean.dt_pred_lst
 
     def sort_miss_vars(self):
         for ind, row in enumerate(self.df.isnull().sum()):
