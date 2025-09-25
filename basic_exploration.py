@@ -40,6 +40,18 @@ class Tabular:
     def reset_target_variable_name(cls):
         cls.target_variable_name = None
 
+    @classmethod
+    def get_target_variable_name_idx(cls):
+        return cls.target_variable_name_idx
+
+    @classmethod
+    def set_target_variable_name_idx(cls, value):
+        cls.target_variable_name_idx = value
+
+    @classmethod
+    def reset_target_variable_name_idx(cls):
+        cls.target_variable_name_idx = None
+
     # Methods
     def check_remove_dupl_val(self):
         dupl_val = self.df.duplicated().sum()
@@ -58,7 +70,7 @@ class Tabular:
         nan_present = len(self.df.columns[self.df.isnull().any()].tolist())
         Tabular.set_nan_values(value=nan_present)
 
-    def check_multi_record_predictors(self) -> list:
+    def check_multi_record_predictors(self):
         """
         Checks for the presence of Predictors having multiple values for a single record.
         :return: A list of predictors satisfying the above condition
@@ -76,7 +88,6 @@ class Tabular:
             # Check for the common predictors
             common_preds :list = list(set(pred_list_spc)&set(pred_list_com))
             Tabular.multi_record_common.extend(common_preds)
-
 
     def multi_record_w_spaces(self,obj_cols):
         split_w_spaces = []
@@ -130,6 +141,7 @@ class Tabular:
         # Reset Class Parameters
         Tabular.reset_nan_values()
         Tabular.reset_target_variable_name()
+        Tabular.reset_target_variable_name_idx()
 
         # Shape of the Dataframe
         print(f"Shape of the Dataframe is: {self.df.shape}")

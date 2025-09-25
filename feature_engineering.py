@@ -16,6 +16,7 @@ def binarize(df, feat, thr):
     transform = binarizer.fit_transform(x)
     return transform
 
+
 # 2 Function to Create Custom Quarter Determination
 def custom_qtr_determination(start_month, end_month, df_col):
     """
@@ -51,8 +52,9 @@ def custom_qtr_determination(start_month, end_month, df_col):
 
     return qtr_lst
 
+
 # 3 Function to determine the next values in the set of sequence of arrays
-def univariate_seq_det(x_array, y_array, x_pred:list, save_model=False) -> list:
+def univariate_seq_det(x_array, y_array, x_pred: list, save_model=False) -> list:
     """
     :param x_array: Given set of Labels - Can be used for Train Data
     :param y_array: Given set of Values - Can be used for Train Data
