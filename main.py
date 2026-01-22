@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser(description="Setting-up the Directory for Diffe
 parser.add_argument("site_name_abbv", help="Name of the Site containing the project")
 parser.add_argument("working_dir_name", help="Name of the Case-Specific Directory")
 parser.add_argument('problem_type', type=int,
-                    help='1- Tabular Regression, 2- Tabular Classification, 3- Time Series Forecasting ')
+                    help='1- Tabular regression, 2- Tabular Classification, 3- Time Series Forecasting ')
 parser.add_argument("workbook_name", type=str,
                     help="Rename the template workbook copied into the working directory")
 

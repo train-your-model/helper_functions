@@ -136,7 +136,7 @@ class Tabular:
 
     def __call__(self, prob_type=None):
         """
-        :param prob_type: 1 - Regression, 2 - Classification, 3 - Time Series
+        :param prob_type: 1 - regression, 2 - Classification, 3 - Time Series
         """
         # Reset Class Parameters
         Tabular.reset_nan_values()

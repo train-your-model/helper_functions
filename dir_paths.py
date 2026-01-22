@@ -1,7 +1,5 @@
 # Config Directory
-
-config_path = 'C:\\Users\\DELL\\PycharmProjects\\HelperFunctions'
+config_path = ''
 
 # Kaggle Dataset Download File
-
-kg_main = 'C:\\Users\\DELL\\PycharmProjects\\HelperFunctions\\kaggle_api\\kaggle_main.py'
+kg_json = 'C:\\Users\\DELL\\PycharmProjects\\HelperFunctions\\api\\.kaggle\\kaggle.json'

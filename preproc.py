@@ -194,7 +194,7 @@ class TabularClean:
 
     def __call__(self, prob_type=None, miss_var_present=None):
         """
-        :param prob_type: 1 - Regression, 2 - Classification
+        :param prob_type: 1 - regression, 2 - Classification
         :param miss_var_present: 0: Missing Value Variable NOT Present, 1: Missing Value Variable IS Present
         """
         # Parameters Reset
@@ -232,7 +232,7 @@ class TabularClean:
 
         # Checking for the presence of negative values in integer dtype predictors
         negative_columns = []
-        if (len(TabularClean.int_pred_lst) != 0) or (len(TabularClean.int_pred_lst) != 0):
+        if (len(TabularClean.int_pred_lst) != 0) or (len(TabularClean.flt_pred_lst) != 0):
             if (len(TabularClean.int_pred_lst) != 0):
                 negative_columns = TabularClean.check_neg_columns(df=self.df,
                                                                   num_dtype_columns=TabularClean.int_pred_lst)

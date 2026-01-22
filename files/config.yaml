@@ -1,0 +1,7 @@
+defaults:
+  download_dir: C:\Users\DELL\Downloads
+  parent_dir: C:\Users\DELL\Desktop
+  templates_dir: C:\Users\DELL\PycharmProjects\HelperFunctions\templates
+json_files:
+  site_names: C:\Users\DELL\PycharmProjects\HelperFunctions\files\site_names.json
+  templates_names: C:\Users\DELL\PycharmProjects\HelperFunctions\files\templates_names.json

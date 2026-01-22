@@ -9,7 +9,7 @@ class BaselineTF:
     Assumption:
         1. The dataframe presented at this point, HAS NOT been preprocessed.
     Checks for the Baseline performance based on a given metric, for a given dataset.
-    Applicable for Single output Regression Prediction.
+    Applicable for Single output regression Prediction.
     """
 
     @classmethod
